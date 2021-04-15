@@ -3,6 +3,10 @@
         {
             "name": "feature/project-creation",
             "base": "develop"
+        },
+        {
+            "name": "feature/crud-pacientes",
+            "base": "develop"
         }
     ]
 }
