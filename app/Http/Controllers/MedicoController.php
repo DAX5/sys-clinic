@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Paciente;
+use App\Models\Medico;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
-class PacienteController extends Controller
+class MedicoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        return view('pacientes.index');
+        return view('medicos.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class PacienteController extends Controller
      */
     public function create()
     {
-        return view('pacientes.create');
+        return view('medicos.create');
     }
 
     /**
@@ -45,47 +45,47 @@ class PacienteController extends Controller
 
         $request->validate([
             'nome' => 'required',
-            'email' => 'required|unique:pacientes',
-            'cpf' => 'required|min:14|unique:pacientes|cpf',
+            'email' => 'required|unique:medicos',
+            'cpf' => 'required|min:14|unique:medicos|cpf',
             'fone' => 'required|min:13'
         ], $messages);
         
-        Paciente::create($request->all());
+        Medico::create($request->all());
 
-        return redirect()->route('pacientes.index')
-            ->with('success', 'Paciente criado com sucesso.');
+        return redirect()->route('medicos.index')
+            ->with('success', 'Médico criado com sucesso.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Paciente  $paciente
+     * @param  \App\Models\Medico  $medico
      * @return \Illuminate\Http\Response
      */
-    public function show(Paciente $paciente)
-    {        
-        return view('pacientes.show', compact('paciente'));
+    public function show(Medico $medico)
+    {
+        return view('medicos.show', compact('medico'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Paciente  $paciente
+     * @param  \App\Models\Medico  $medico
      * @return \Illuminate\Http\Response
      */
-    public function edit(Paciente $paciente)
+    public function edit(Medico $medico)
     {
-        return view('pacientes.edit', compact('paciente'));
+        return view('medicos.edit', compact('medico'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Paciente  $paciente
+     * @param  \App\Models\Medico  $medico
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Paciente $paciente)
+    public function update(Request $request, Medico $medico)
     {
         $messages = [
             'required' => 'O campo :attribute é obrigatório!',
@@ -101,39 +101,39 @@ class PacienteController extends Controller
             'fone' => 'required|min:13'
         ], $messages);
         
-        $paciente->update($request->all());
+        $medico->update($request->all());
 
-        return redirect()->route('pacientes.index')
-            ->with('success', 'Paciente atualizado com sucesso.');
+        return redirect()->route('medicos.index')
+            ->with('success', 'Médico atualizado com sucesso.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Paciente  $paciente
+     * @param  \App\Models\Medico  $medico
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Paciente $paciente)
+    public function destroy(Medico $medico)
     {
-        $paciente->delete();
+        $medico->delete();
 
-        return redirect()->route('pacientes.index')
-            ->with('success', 'Paciente removido com sucesso.');
+        return redirect()->route('medicos.index')
+            ->with('success', 'Médico removido com sucesso.');
     }
 
     /**
-     * Get pacientes for DataTable list.
+     * Get medicos for DataTable list.
      *
      * @return Yajra\DataTables\Facades\DataTables
      */
-    public function getPacientes(Request $request)
+    public function getMedicos(Request $request)
     {
         if ($request->ajax()) {
-            $data = Paciente::latest()->get();
+            $data = Medico::latest()->get();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
-                    $actionBtn = '<form action="'. route('pacientes.destroy', $row->id) .'" method="POST"> <a href="' . route('pacientes.show', $row->id) . '" class="show btn btn-primary btn-sm" title="Mostrar"><i class="fa fa-eye"></i></a> <a href="' . route('pacientes.edit', $row->id) . '" class="edit btn btn-success btn-sm" title="Editar"><i class="fa fa-edit"></i></a> '.csrf_field() .'<input type="hidden" name="_method" value="DELETE"><button type="submit" class="delete btn btn-danger btn-sm" title="Remover" onclick="return confirm(\'Tem certeza que deseja remover o paciente '. $row->nome .'?\')"><i class="fa fa-trash"></i></button> </form>';
+                    $actionBtn = '<form action="'. route('medicos.destroy', $row->id) .'" method="POST"> <a href="' . route('medicos.show', $row->id) . '" class="show btn btn-primary btn-sm" title="Mostrar"><i class="fa fa-eye"></i></a> <a href="' . route('medicos.edit', $row->id) . '" class="edit btn btn-success btn-sm" title="Editar"><i class="fa fa-edit"></i></a> '.csrf_field() .'<input type="hidden" name="_method" value="DELETE"><button type="submit" class="delete btn btn-danger btn-sm" title="Remover" onclick="return confirm(\'Tem certeza que deseja remover o médico '. $row->nome .'?\')"><i class="fa fa-trash"></i></button> </form>';
                     return $actionBtn;
                 })
                 ->rawColumns(['action'])

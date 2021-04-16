@@ -84,6 +84,14 @@
 
         $(this).val(input);
     });
+
+    $('.crm').keyup(function() {
+        let input = $(this).val();
+        
+        input = input.replace(/\D/g, "")
+
+        $(this).val(input);
+    });
     </script>
     
 </html>
