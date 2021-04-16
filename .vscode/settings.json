@@ -7,6 +7,10 @@
         {
             "name": "feature/crud-medicos",
             "base": "develop"
+        },
+        {
+            "name": "feature/crud-users",
+            "base": "develop"
         }
     ]
 }
