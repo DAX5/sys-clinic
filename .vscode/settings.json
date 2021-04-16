@@ -3,6 +3,22 @@
         {
             "name": "feature/project-creation",
             "base": "develop"
+        },
+        {
+            "name": "feature/crud-medicos",
+            "base": "develop"
+        },
+        {
+            "name": "feature/crud-users",
+            "base": "develop"
+        },
+        {
+            "name": "feature/curd-agendamentos",
+            "base": "develop"
+        },
+        {
+            "name": "feature/layout-change",
+            "base": "develop"
         }
     ]
 }

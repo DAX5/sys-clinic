@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\MedicoController;
+use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\AgendamentoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +18,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+    return redirect()->route('agendamentos.index');
+})->middleware(['auth']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
+
+Route::get('pacientes/list', [PacienteController::class, 'getPacientes'])->name('pacientes.list')->middleware(['auth']);
+
+Route::resource('pacientes', PacienteController::class)->middleware(['auth']);
+
+Route::get('medicos/list', [MedicoController::class, 'getMedicos'])->name('medicos.list')->middleware(['auth']);
+
+Route::resource('medicos', MedicoController::class)->middleware(['auth'])->middleware(['auth']);
+
+Route::get('users/list', [UserController::class, 'getUsers'])->name('users.list');
+
+Route::resource('users', UserController::class)->middleware(['auth']);
+
+Route::get('agendamentos/list', [AgendamentoController::class, 'getAgendamentos'])->name('agendamentos.list')->middleware(['auth']);
+
+Route::resource('agendamentos', AgendamentoController::class)->middleware(['auth']);
 
 require __DIR__.'/auth.php';
