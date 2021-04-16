@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\PacienteController;
 
@@ -30,5 +31,9 @@ Route::resource('pacientes', PacienteController::class);
 Route::get('medicos/list', [MedicoController::class, 'getMedicos'])->name('medicos.list');
 
 Route::resource('medicos', MedicoController::class);
+
+Route::get('users/list', [UserController::class, 'getUsers'])->name('users.list');
+
+Route::resource('users', UserController::class);
 
 require __DIR__.'/auth.php';
