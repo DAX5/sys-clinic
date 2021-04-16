@@ -42,7 +42,6 @@
                 color: white;
                 text-align: center;
             }
-
         </style>
     </head>
     <body class="font-sans antialiased">

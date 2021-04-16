@@ -5,8 +5,8 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="#">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                    <a href="/">
+                        <img src="/logo.png" class="login-logo" alt="Sys Clinic Logo"/>
                     </a>
                 </div>
 
@@ -122,3 +122,9 @@
         </div>
     </div>
 </nav>
+
+<style>
+    .login-logo {
+        max-width: 50px;
+    }
+</style>
