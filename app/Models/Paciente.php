@@ -26,5 +26,13 @@ class Paciente extends Model
         'email',
         'cpf',
         'fone',
-    ];    
+    ];
+
+    /**
+     * Get the agendamentos for the paciente.
+     */
+    public function agendamentos()
+    {
+        return $this->hasMany(Agendamento::class);
+    }
 }

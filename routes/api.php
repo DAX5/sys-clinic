@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MedicoAPIController;
+use App\Http\Controllers\API\MedicoAPIController;
 
 /*
 |--------------------------------------------------------------------------
