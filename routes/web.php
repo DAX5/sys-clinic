@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\PacienteController;
 
 /*
@@ -25,5 +26,9 @@ Route::get('/dashboard', function () {
 Route::get('pacientes/list', [PacienteController::class, 'getPacientes'])->name('pacientes.list');
 
 Route::resource('pacientes', PacienteController::class);
+
+Route::get('medicos/list', [MedicoController::class, 'getMedicos'])->name('medicos.list');
+
+Route::resource('medicos', MedicoController::class);
 
 require __DIR__.'/auth.php';

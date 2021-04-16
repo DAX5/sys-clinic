@@ -5,7 +5,7 @@
             "base": "develop"
         },
         {
-            "name": "feature/crud-pacientes",
+            "name": "feature/crud-medicos",
             "base": "develop"
         }
     ]
