@@ -15,11 +15,11 @@ class CreateAgendamentosTable extends Migration
     {
         Schema::create('agendamentos', function (Blueprint $table) {
             $table->id();
-            $table->integer("paciente_id")->unsigned();
+            $table->unsignedBigInteger("paciente_id");
             $table->foreign("paciente_id")->references("id")->on("pacientes")->onUpdate('cascade');
-            $table->integer("medico_id")->unsigned();
+            $table->unsignedBigInteger("medico_id");
             $table->foreign("medico_id")->references("id")->on("medicos")->onUpdate('cascade');
-            $table->integer("status_id")->unsigned();
+            $table->unsignedBigInteger("status_id");
             $table->foreign("status_id")->references("id")->on("status_agendamentos")->onUpdate('cascade');
             $table->dateTime("horario");
             $table->timestamps();

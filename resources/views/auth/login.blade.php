@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <img src="/logo.png" class="login-logo" alt="Sys Clinic Logo"/>
             </a>
         </x-slot>
 
@@ -54,3 +54,9 @@
         </form>
     </x-auth-card>
 </x-guest-layout>
+
+<style>
+    .login-logo {
+        max-width: 100px;
+    }
+</style>

@@ -15,6 +15,10 @@
         {
             "name": "feature/curd-agendamentos",
             "base": "develop"
+        },
+        {
+            "name": "feature/layout-change",
+            "base": "develop"
         }
     ]
 }
