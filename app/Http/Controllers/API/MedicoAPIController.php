@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use Exception;
 use App\Models\Medico;
+use App\Http\Controllers\Controller;
 
 class MedicoAPIController extends Controller
 {

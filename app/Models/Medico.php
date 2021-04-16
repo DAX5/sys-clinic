@@ -31,4 +31,12 @@ class Medico extends Model
         'especialidade',
         'crm',
     ];
+
+    /**
+     * Get the agendamentos for the medico.
+     */
+    public function agendamentos()
+    {
+        return $this->hasMany(Agendamento::class);
+    }
 }
