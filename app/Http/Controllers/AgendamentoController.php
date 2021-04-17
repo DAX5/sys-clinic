@@ -138,16 +138,16 @@ class AgendamentoController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('medico_nome', function($agendamento) {
-                    return $agendamento->medico->nome . ' - ' . $agendamento->medico->especialidade;
+                    return isset($agendamento->medico) ? $agendamento->medico->nome . ' - ' . $agendamento->medico->especialidade : 'Médico removido';
                 })
                 ->addColumn('paciente_nome', function($agendamento) {
-                    return $agendamento->paciente->nome;
+                    return isset($agendamento->paciente) ? $agendamento->paciente->nome : 'Paciente removido';
                 })
                 ->editColumn('horario', function($agendamento) {
                     return $agendamento->horario->format('d/m/Y H:i:s');
                 })
                 ->addColumn('status', function($agendamento) {
-                    return $agendamento->status->status;
+                    return isset($agendamento->status) ? $agendamento->status->status : "Status removido";
                 })
                 ->addColumn('action', function($row){
                     $actionBtn = '<form action="'. route('agendamentos.destroy', $row->id) .'" method="POST"> <a href="' . route('agendamentos.show', $row->id) . '" class="show btn btn-primary btn-sm" title="Mostrar"><i class="fa fa-eye"></i></a> <a href="' . route('agendamentos.edit', $row->id) . '" class="edit btn btn-success btn-sm" title="Editar"><i class="fa fa-edit"></i></a> '.csrf_field() .'<input type="hidden" name="_method" value="DELETE"><button type="submit" class="delete btn btn-danger btn-sm" title="Remover" onclick="return confirm(\'Tem certeza que deseja remover o agendamento?\')"><i class="fa fa-trash"></i></button> </form>';
