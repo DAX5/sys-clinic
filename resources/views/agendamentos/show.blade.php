@@ -21,13 +21,13 @@ Agendamento
                             <div class="col-xs-12 col-sm-12 col-md-6">
                                 <div class="form-group">
                                     <strong>Médico</strong>
-                                    <p>{{ $agendamento->medico->nome }}</p>
+                                    <p>{{ isset($agendamento->medico) ? $agendamento->medico->nome : 'Médico removido' }}</p>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-6">
                                 <div class="form-group">
                                     <strong>Paciente</strong>
-                                    <p>{{ $agendamento->paciente->nome }}</p>
+                                    <p>{{ isset($agendamento->paciente) ? $agendamento->paciente->nome : 'Paciente removido' }}</p>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-6">
@@ -39,7 +39,7 @@ Agendamento
                             <div class="col-xs-12 col-sm-12 col-md-6">
                                 <div class="form-group">
                                     <strong>Status</strong>
-                                    <p>{{ $agendamento->status->status }}</p>
+                                    <p>{{ isset($agendamento->status) ? $agendamento->status->status : '' }}</p>
                                 </div>
                             </div>
                         </div>
